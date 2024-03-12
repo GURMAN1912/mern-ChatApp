@@ -20,7 +20,9 @@ const DashboardLayout = () => {
   const {onToggleMode}=useSettings();
 
   return (
-    <>
+    <Stack direction={"row"}>
+
+    <Box display={"flex"} alignItems={"center"}>
       <Box
         p={2}
         sx={{
@@ -102,7 +104,8 @@ const DashboardLayout = () => {
         </Stack>
       </Box>
       <Outlet />
-    </>
+    </Box>
+    </Stack>
   );
 };
 
