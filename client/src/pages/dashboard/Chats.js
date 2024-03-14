@@ -169,7 +169,7 @@ const Chats = () => {
                 Pinned
               </Typography>
               {ChatList.filter((el) => el.pinned).map((el) => {
-                return <ChatElement {...el} />;
+                return <ChatElement key={el.id} {...el} />;
               })}
             </Stack>
             <Stack spacing={2.4}>

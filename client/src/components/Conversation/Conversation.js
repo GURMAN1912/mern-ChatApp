@@ -21,6 +21,7 @@ import {
   Smiley,
   VideoCamera,
 } from "phosphor-react";
+import Message from "./Message";
 
 const StyledInput = styled(TextField)(({ theme }) => ({
   "& .MuiInputBase-input": {
@@ -119,6 +120,7 @@ const Conversation = () => {
       </Box>
       {/* Msg */}
       <Box width={"100%"} height={"calc(100vh - 184px )"} sx={{ flexGrow: 1 }}></Box>
+                <Message />
       {/* Chat Footer */}
       <Box
         p={2}
@@ -130,16 +132,15 @@ const Conversation = () => {
             placeholder="Write a message..."
             varient="filled"
             InputProps={{
-              disableUnderline: true,
               startAdornment: (
-                <InputAdornment>
+                <InputAdornment position="start">
                   <IconButton>
                     <LinkSimple />
                   </IconButton>
                 </InputAdornment>
               ),
               endAdornment: (
-                <InputAdornment>
+                <InputAdornment position="end">
                   <IconButton>
                     <Smiley />
                   </IconButton>
