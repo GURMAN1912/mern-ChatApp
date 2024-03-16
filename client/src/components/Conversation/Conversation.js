@@ -31,6 +31,9 @@ import {
   VideoCamera,
 } from "phosphor-react";
 import Message from "./Message";
+import { ToggleSidebar } from "../../redux/slices/app";
+import { useDispatch } from "react-redux";
+import { SimpleBarStyle } from "../Scrollbar";
 
 const StyledInput = styled(TextField)(({ theme }) => ({
   "& .MuiInputBase-input": {
@@ -139,6 +142,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 const Conversation = () => {
   const theme = useTheme();
+  const dispatch=useDispatch();
   const [openPicker,setOpenPicker]=React.useState(false)
   return (
     <Stack height={"100%"} maxHeight={"100vh"} width={"auto"}>
@@ -158,7 +162,9 @@ const Conversation = () => {
           justifyContent={"space-between"}
           sx={{ width: "100%", height: "100%" }}
         >
-          <Stack direction={"row"} spacing={2}>
+          <Stack onClick={()=>{
+            dispatch(ToggleSidebar())
+          }} direction={"row"} spacing={2}>
             <Box>
               <StyledBadge
                 overlap="circular"
@@ -201,7 +207,9 @@ const Conversation = () => {
       </Box>
       {/* Msg */}
       <Box width={"100%"} sx={{ flexGrow: 1,height:"100%",overflowY:"scroll" }}>
-                <Message />
+        <SimpleBarStyle timeout={500} clickOnTrack={false} >
+                 <Message />
+        </SimpleBarStyle>
       </Box>
       {/* Chat Footer */}
       <Box
