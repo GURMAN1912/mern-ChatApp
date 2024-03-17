@@ -11,12 +11,13 @@ import {
 } from "@mui/material";
 import useSettings from "../../hooks/useSettings.js";
 import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Logo from "../../assets/Images/logo.ico";
 import { Nav_Buttons, Profile_Menu } from "../../data/index.js";
 import { Gear } from "phosphor-react";
 import { faker } from "@faker-js/faker";
 const DashboardLayout = () => {
+  const navigate=useNavigate();
   const theme = useTheme();
   const [selected, setSelected] = useState(0);
   const { onToggleMode } = useSettings();
@@ -48,7 +49,7 @@ const DashboardLayout = () => {
             spacing={3}
           >
             <Stack alignItems={"center"} spacing={4}>
-              <Box
+              <Box onClick={()=>navigate("/app")}
                 sx={{
                   backgroundColor: theme.palette.primary.main,
                   height: 64,
@@ -94,7 +95,7 @@ const DashboardLayout = () => {
                     sx={{ backgroundColor: theme.palette.primary.main }}
                     borderRadius={1.5}
                   >
-                    <IconButton
+                    <IconButton onClick={()=>navigate("/setting")}
                       sx={{
                         width: "max-content",
                         color: theme.palette.mode === "light" ? "#000" : "#fff",

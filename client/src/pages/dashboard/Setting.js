@@ -3,6 +3,8 @@ import { Avatar, Box, Divider, IconButton, Stack, Typography, useTheme } from "@
 import { Bell, CaretLeft, Divide, Image, Info, Key, Keyboard, Lock, Note, PencilCircle } from "phosphor-react";
 import React from "react";
 import { useState } from "react";
+import Shortcut from "../../sections/settings/Shortcut";
+import ThemeDialog from "../../sections/settings/ThemeDialog";
 const Setting = () => {
   const theme = useTheme();
 
@@ -115,13 +117,17 @@ const Setting = () => {
                                 {icon}
                                 <Typography variant="body2">{title}</Typography>
                             </Stack>
-                            {key!==7 &&<Divider/>}
+                            {key!==7 &&<Divider />}
                         </Stack>
                     ))}
                 </Stack>
             </Stack>
         </Box>
       </Stack>
+      {openShortcuts &&
+      <Shortcut open={openShortcuts} handleClose={handleCloseShortcuts}/>
+      }
+      {openTheme && <ThemeDialog open={openTheme} handleClose={handleCloseTheme}/>}
     </>
   );
 };
